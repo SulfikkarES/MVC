@@ -1,0 +1,26 @@
+<h1>Contact-list!</h1>
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>AGE</th>
+    <th>DOB</th>
+    <th>GENDER</th>
+    <th>CourseFee</th>
+    <th>Action</th>
+
+  </tr>
+  <tr>
+    <tr *ngFor='let student of contactList' >
+      <td>{{student.ID }}</td>
+      <td>{{student.Name |uppercase}}</td>
+      <td>{{student.Age}}</td>
+      <td>{{student.Dob |date  }}</td>
+      <td>{{student.Gender | lowercase}}</td>
+      <td>{{student.CourseFee |currency :'INR':true}}</td>
+      <td>
+        <a [routerLink]="['/Contact',student.ID]">View</a>
+      </td>
+    </tr>
+
+</table>
