@@ -11,14 +11,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ContactDetailsComponent implements OnInit {
 
-  Contactobj!: contact;
-  id;
+  ID!: string | null;
+  Contactobj: contact | undefined;
+
   contactList :any[]=[];
   constructor(private serviceobj:RoutingServiceService, private activaterouteobj:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.contactList=this.serviceobj.getcontacts();
-    this.id = this.activaterouteobj.snapshot.paramMap.get("ID");
+    this.ID = this.activaterouteobj.snapshot.paramMap.get("ID");
+    this.Contactobj=this.contactList.find(c=>c.ID==this.ID);
   }
 
 }
